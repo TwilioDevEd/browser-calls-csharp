@@ -25,7 +25,7 @@ namespace BrowserCalls.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bicycle-polo.css"));
         }
     }
 }
