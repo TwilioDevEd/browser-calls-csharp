@@ -137,6 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
+    <Compile Include="Controllers\TokenController.cs" />
     <Compile Include="Domain\Twilio\Capability.cs" />
     <Compile Include="Domain\Twilio\Credentials.cs" />
     <Compile Include="Global.asax.cs">

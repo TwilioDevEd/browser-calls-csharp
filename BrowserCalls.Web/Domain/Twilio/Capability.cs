@@ -6,8 +6,6 @@ namespace BrowserCalls.Web.Domain.Twilio
     {
         private readonly ICredentials _credentials;
 
-        public Capability() : this(new Credentials()) {}
-
         public Capability(ICredentials credentials)
         {
             _credentials = credentials;
