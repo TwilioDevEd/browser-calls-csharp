@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using BrowserCalls.Web.Domain.Twilio;
 
 namespace BrowserCalls.Web.Controllers
@@ -23,7 +24,8 @@ namespace BrowserCalls.Web.Controllers
 
         private static string InferRole(string page)
         {
-            return page.Equals("role") ? "support_agent" : "customer";
+            return page.Equals("/Dashboard", StringComparison.InvariantCultureIgnoreCase)
+                ? "support_agent" : "customer";
         }
     }
 }

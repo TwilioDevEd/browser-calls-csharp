@@ -1,4 +1,5 @@
-﻿using BrowserCalls.Web.Domain.Twilio;
+﻿using System.Web.Mvc;
+using BrowserCalls.Web.Domain.Twilio;
 using Twilio.TwiML;
 using Twilio.TwiML.Mvc;
 
@@ -15,6 +16,9 @@ namespace BrowserCalls.Web.Controllers
             _credentials = credentials;
         }
 
+
+        // POST Call/Connect
+        [HttpPost]
         public TwiMLResult Connect(string phoneNumber)
         {
             return TwiML(BuildResponse(phoneNumber));
