@@ -20,11 +20,6 @@ namespace BrowserCalls.Web.Controllers
         [HttpPost]
         public ActionResult Connect(string phoneNumber)
         {
-            return TwiML(BuildResponse(phoneNumber));
-        }
-
-        private TwilioResponse BuildResponse(string phoneNumber)
-        {
             var response = new TwilioResponse();
             var callerIDAttribute = new {callerId = _credentials.PhoneNumber};
             if (phoneNumber != null)
@@ -38,7 +33,7 @@ namespace BrowserCalls.Web.Controllers
                     new Client("support_agent"));
             }
 
-            return response;
+            return TwiML(response);
         }
     }
 }
