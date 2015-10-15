@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace BrowserCalls.Web.Test.Controllers
 {
-    public class HomeControllerTest
+    public class TicketsControllerTest
     {
         [Test]
         public void GivenACreateAction_WhenTheTicketIsValid_ThenItIsCreated()
@@ -41,7 +41,7 @@ namespace BrowserCalls.Web.Test.Controllers
             var ticket = new Ticket();
             var result = controller.Create(ticket) as ViewResult;
 
-            Assert.That(result.ViewName, Is.EqualTo("~/Views/Home/Index.cshtml"));
+            Assert.That(result.ViewName, Is.EqualTo("Index"));
         }
 
         private static TicketsController GetTicketsController(ITicketsRepository repository)
