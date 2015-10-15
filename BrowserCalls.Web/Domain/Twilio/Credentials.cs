@@ -7,6 +7,7 @@ namespace BrowserCalls.Web.Domain.Twilio
         string AccountSID { get; }
         string AuthToken { get; }
         string TwiMLApplicationSID { get; }
+        string PhoneNumber { get; }
     }
 
     public class Credentials : ICredentials
@@ -30,6 +31,13 @@ namespace BrowserCalls.Web.Domain.Twilio
             get
             {
                 return WebConfigurationManager.AppSettings["TwiMLApplicationSid"];
+            }
+        }
+
+        public string PhoneNumber {
+            get
+            {
+                return WebConfigurationManager.AppSettings["TwilioPhoneNumber"];
             }
         }
     }

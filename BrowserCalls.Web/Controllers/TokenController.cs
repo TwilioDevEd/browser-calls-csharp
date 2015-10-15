@@ -13,6 +13,7 @@ namespace BrowserCalls.Web.Controllers
         {
             _credentials = credentials;
         }
+
         // GET: Token/Generate
         public JsonResult Generate(string page)
         {
