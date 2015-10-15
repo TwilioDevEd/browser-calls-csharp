@@ -40,3 +40,291 @@
       * [Twilio Client docs](//www.twilio.com/docs/client)
       * [Getting Started with ASP.NET MVC
       5](//www.asp.net/mvc/overview/getting-started/introduction/getting-started)
+
+  .step(data-file='BrowserCalls.Web/Controllers/TicketsController.cs')
+    :markdown
+      ## Submit a support ticket
+
+      The home page of our app displays a form for customers to submit support
+      tickets. We use the
+      [Razor Engine](//bit.ly/1OGlLhV)
+      to power the page.
+
+      The `Ticket` model itself has just a few fields.
+
+      Bear in mind that `Create` is just a thin wrapper for:
+
+      ```
+      private readonly BrowserCallsContext _context =
+          new BrowserCallsContext();
+
+      public void Create(Ticket ticket)
+      {
+          _context.Tickets.Add(ticket);
+          _context.SaveChanges();
+      }
+      ```
+
+      ---
+
+      **See also:**
+
+      * [Entity Framework](//msdn.microsoft.com/en-us/data/ef.aspx)
+      * [Repository
+      Pattern](//www.asp.net/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)
+
+  .step(data-file='BrowserCalls.Web/Views/Dashboard/Index.cshtml',
+  data-highlight='27-51', data-mode='xml')
+    :markdown
+      ## The support dashboard
+
+      When a support agent visits `/Dashboard`, they see all the support
+      tickets which have been submitted.
+
+      ![Browser Calls support dashboard](//howtodocs.s3.amazonaws.com/browser-calls/browser-calls-dashboard.png)
+
+      Each ticket also has a "Call Customer" button which invokes a JavaScript
+      function we wrote named `callCustomer()`. That function kicks off a Twilio
+      Client call to the phone number passed as its sole parameter.
+
+  .step(data-file='BrowserCalls.Web/Domain/Twilio/Capability.cs',
+  data-highlight='14-21')
+    :markdown
+      ## Generate a capability token
+
+      Before our users can make calls with Twilio Client in their browser, we
+      need to provide them with a capability token.
+
+      We use the [Twilio.Client](//www.nuget.org/packages/Twilio.Client/)
+      helper library to generate and configure our capability tokens. To allow
+      our support agents to call the phone numbers on our tickets, we use the
+      `AllowClientOutgoing` method.
+
+      That method requires an identifier for a
+      [TwiML Application](//www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app).
+      Twilio will send a POST request to our backend every time a user makes a
+      Twilio Client call — the TwiML Application tells Twilio which URL to send
+      that request to.
+
+      ---
+
+      **See also:**
+
+      * [Twilio Client: Capability Tokens](//www.twilio.com/docs/client/capability-tokens)
+      * [Twilio Client, MVC and WebMatrix Helper
+      Libraries](//www.twilio.com/blog/2012/02/twilio-for-net-developers-part-5-twilio-client-mvc-and-webmatrix-helper-libraries.html)
+
+  .step(data-file='BrowserCalls.Web/Scripts/browser-calls.js',
+  data-highlight='18-29')
+    :markdown
+      ## Set up Twilio Client
+
+      To use Twilio Client in a web browser we use the
+      [twilio.js library](//www.twilio.com/docs/client/twilio-js).
+
+      We start by retrieving a capability token from the view we defined in the
+      previous step with an AJAX request. We then enable Twilio Client
+      for this page by passing our token to `Twilio.Device.setup()`.
+
+      The `Twilio.Device.ready()` callback lets us know when the browser is
+      ready to make and receive calls.
+
+      ---
+
+      **See also:**
+
+      * [jQuery .get()](//api.jquery.com/jquery.get/)
+      * [Twilio.Device.setup()](//www.twilio.com/docs/client/device#setup)
+      * [Twilio.Device.ready()](//www.twilio.com/docs/client/device#ready)
+
+  .step(data-file='BrowserCalls.Web/Scripts/browser-calls.js',
+  data-highlight='91-97')
+    :markdown
+      ## Call a customer (browser-to-phone)
+
+      When our support agent clicks "Call Customer" on a support ticket, this
+      function initiates the call.
+
+      We use `Twilio.Device.connect()` to begin a new outgoing call. Our backend
+      will tell Twilio how to handle this call, so we include a `phoneNumber`
+      parameter that we'll use in our `call` view.
+
+      Let's look at that view next.
+
+      ---
+
+      **See also:**
+
+      * [Twilio.Device.connect()](//www.twilio.com/docs/client/device#connect)
+
+  .step(data-file='BrowserCalls.Web/Controllers/CallController.cs',
+  data-highlight='19-24')
+    :markdown
+      ## Connect the call to a phone number
+
+      Whenever one of our users makes a call, Twilio will send a POST request to
+      the URL we set on our TwiML Application - in this case,
+      `/Call/Connect`.
+
+      We use [TwiML](//www.twilio.com/docs/api/twiml) to respond to the
+      request and tell Twilio how to handle the call. Twilio will pass along the
+      `phoneNumber` parameter from the previous step in its request, which
+      we will then [Dial](//www.twilio.com/docs/api/twiml/dial) in our TwiML.
+
+      ---
+
+      **See also:**
+
+      * [<Number> TwiML verb](//www.twilio.com/docs/api/twiml/number)
+      * [Using the Twilio.TwiML Helper
+      Library](//www.twilio.com/blog/2012/02/twilio-for-net-developers-part-4-using-the-twilio-twiml-helper-library.html)
+
+  .step(data-file='BrowserCalls.Web/Scripts/browser-calls.js',
+  data-highlight='47-63')
+      :markdown
+        ## The call is live
+
+        After our `call` view responds, Twilio completes the connection between
+        our support agent's browser and the customer's phone.
+
+        We use the `Twilio.Device.connect()` callback to update some UI elements
+        and make it clear our user is in a call. This function receives a
+        [Connection](//www.twilio.com/docs/client/connection) object,
+        which offers some additional details about the call.
+
+        ---
+
+        **See also:**
+
+        * [Twilio.Device.connect() callback](//www.twilio.com/docs/client/device#connect-handler)
+        * [jQuery .prop()](//api.jquery.com/prop/)
+
+  .step(data-file='BrowserCalls.Web/Scripts/browser-calls.js',
+  data-highlight='99-105')
+      :markdown
+        ## Call a support agent (browser-to-browser)
+
+        Support tickets are useful, but sometimes a customer needs help right now.
+        With just a little more work we let customers speak with a support agent
+        live via a browser-to-browser call.
+
+        ![Browser Calls call support](//howtodocs.s3.amazonaws.com/browser-calls/browser-calls-call-support.png)
+
+        When a customer clicks "Call support" on the home page we again use
+        `Twilio.Device.connect()` to initiate the call. This time we don't pass
+        any additional parameters — our backend will route this call to our
+        support agent.
+
+        ---
+
+        **See also:**
+
+        * [Twilio.Device.connect()](//www.twilio.com/docs/client/device#connect)
+
+  .step(data-file='BrowserCalls.Web/Controllers/CallController.cs',
+  data-highlight='26-42')
+      :markdown
+        ## Connect the call to the support agent's client
+
+        To allow our support agents to accept incoming calls we use the
+        `AllowClientIncoming` method when generating their capability token,
+        passing `support_agent` as the client's name.
+
+        When Twilio sends a POST request to our `/Call/Connect` end point, we can connect the
+        call to our support agent by responding with a
+        [<Client>](//www.twilio.com/docs/api/twiml/client) TwiML noun and
+        the `support_agent` name.
+
+        ---
+
+        **See also:**
+
+        * [Allow Incoming Connections on Capability Tokens](//www.twilio.com/docs/client/capability-tokens#allow-incoming-connections)
+
+  .step(data-file='BrowserCalls.Web/Scripts/browser-calls.js', data-highlight='75-89')
+      :markdown
+        ## Answer the call
+
+        When our support agent's client receives an incoming call, it will trigger
+        the function we defined on the `Twilio.Device.incoming()` callback.
+
+        The incoming `connection` will be in a "pending" state until we invoke its
+        `.accept()` method, which we do in a function bound to the "Answer
+        call" button.
+
+        We also set a `.accept()` callback to update the UI once the call is live.
+
+        ---
+
+        **See also:**
+
+        * [Twilio.Device.incoming()](//www.twilio.com/docs/client/device#incoming)
+        * [Twilio.Device.accept()](//www.twilio.com/docs/client/connection#accept)
+        * [jQuery .click()](//api.jquery.com/click/)
+
+  .step(data-file='BrowserCalls.Web/Scripts/browser-calls.js', data-highlight='107-110, 65-73')
+      :markdown
+        ## End a call
+
+        To end a call we invoke `Twilio.Device.disconnectAll()`, which we wired
+        to the "Hang up" button in our UI.
+
+        We also define a callback function with `Twilio.Device.disconnect()`,
+        above, to reset some UI elements.
+
+        ---
+
+        **See also:**
+
+        * [Twilio.Device.disconnectAll()](//www.twilio.com/docs/client/device#disconnect-all)
+        * [Twilio.Device.disconnect()](//www.twilio.com/docs/client/device#disconnect)
+
+  .step(data-file='BrowserCalls.Web/Scripts/browser-calls.js', data-highlight='36-45')
+      :markdown
+        ## Check if a support agent is available
+
+        If a customer calls support but no support agent is online, their call
+        will go unanswered. To help avoid this frustration, we display a message
+        above the "Call support" button when no agent is available:
+
+        ![Browser Calls support unavailable](//howtodocs.s3.amazonaws.com/browser-calls/browser-calls-support-unavailable.png)
+
+        We use `Twilio.Device.presence()` to update this message when the
+        support agent's availability changes.
+
+        ---
+
+        **See also:**
+
+        * [Twilio Client .presence()](//www.twilio.com/docs/client/device#presence)
+
+    .step
+      :markdown
+        ## Where to next?
+
+        That's it! Our ASP.NET MVC application now powers browser-to-phone and
+        browser-to-browser calls using Twilio Client.
+
+        If you're a .NET developer working with Twilio, you might also enjoy these
+        tutorials:
+
+        [**Appointment-Reminders (ASP.NET
+        MVC)**](//www.twilio.com/docs/howto/walkthrough/appointment-reminders/csharp/mvc)
+
+        Schedule appointment reminders to be sent via SMS.
+
+        [**IVR: Phone Tree (ASP.NET
+        MVC)**](//www.twilio.com/docs/howto/walkthrough/ivr-phone-tree/csharp/mvc)
+
+        Easily route callers to the right people and information with an IVR
+        (interactive voice response) system.
+
+        [**Automated Survey (ASP.NET
+        MVC)**](//www.twilio.com/docs/howto/walkthrough/automated-survey/csharp/mvc)
+
+        Instantly collect structured data from your users with a survey conducted
+        over a voice call or SMS text messages.
+
+        Thanks for checking out this tutorial! If you have any feedback to share
+        with us, we'd love to hear it. Tweet [@twilio](//twitter.com/twilio)
+        to let us know what you think.
