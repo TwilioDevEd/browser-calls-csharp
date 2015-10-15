@@ -18,7 +18,7 @@ namespace BrowserCalls.Web.Controllers
 
         // POST Call/Connect
         [HttpPost]
-        public TwiMLResult Connect(string phoneNumber)
+        public ActionResult Connect(string phoneNumber)
         {
             return TwiML(BuildResponse(phoneNumber));
         }
