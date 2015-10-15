@@ -16,7 +16,6 @@ namespace BrowserCalls.Web.Controllers
             _credentials = credentials;
         }
 
-
         // POST Call/Connect
         [HttpPost]
         public TwiMLResult Connect(string phoneNumber)

@@ -4,8 +4,7 @@ namespace BrowserCalls.Web.Models
 {
     public class BrowserCallsContext : DbContext
     {
-        public BrowserCallsContext()
-            : base("DefaultConnection")
+        public BrowserCallsContext() : base("DefaultConnection")
         {
         }
 

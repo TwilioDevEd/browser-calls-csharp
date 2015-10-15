@@ -18,7 +18,6 @@ namespace BrowserCalls.Web.Test.Controllers
         {
             var repository = new InMemoryTicketsRepository();
             var controller = GetTicketsController(repository);
-
             var ticket = new Ticket
             {
                 Name = "name",
@@ -26,6 +25,7 @@ namespace BrowserCalls.Web.Test.Controllers
                 Description = "description",
                 CreatedAt = new DateTime(1985, 8, 26)
             };
+
             controller.Create(ticket);
 
             var tickets = repository.All();
@@ -47,7 +47,6 @@ namespace BrowserCalls.Web.Test.Controllers
         private static TicketsController GetTicketsController(ITicketsRepository repository)
         {
             var controller = new TicketsController(repository);
-
             controller.ControllerContext = new ControllerContext
             {
                 Controller = controller,

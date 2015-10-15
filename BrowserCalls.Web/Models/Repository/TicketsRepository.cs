@@ -17,6 +17,7 @@ namespace BrowserCalls.Web.Models.Repository
         {
             _context = new BrowserCallsContext();
         }
+
         public void Create(Ticket ticket)
         {
             _context.Tickets.Add(ticket);

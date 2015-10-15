@@ -9,8 +9,7 @@ namespace BrowserCalls.Web.Controllers
     {
         private readonly ITicketsRepository _repository;
 
-        public TicketsController()
-            : this(new TicketsRepository()) { }
+        public TicketsController() : this(new TicketsRepository()) { }
 
         public TicketsController(ITicketsRepository repository)
         {
