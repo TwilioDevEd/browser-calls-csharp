@@ -23,6 +23,7 @@ namespace BrowserCalls.Web.Controllers
             if (ModelState.IsValid)
             {
                 _repository.Create(ticket);
+                TempData["success"] = "Your ticket was submitted! An agent will call you soon.";
                 return RedirectToAction("Index", new { Controller = "Home" });
             }
 
