@@ -10,7 +10,7 @@ namespace BrowserCalls.Web.Models
         [Required]
         public String Name { get; set; }
 
-        [Required]
+        [Required, Display(Name = "Phone Number")]
         public String PhoneNumber { get; set; }
 
         [Required]

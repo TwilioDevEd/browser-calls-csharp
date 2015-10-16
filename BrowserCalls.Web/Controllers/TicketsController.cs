@@ -15,6 +15,10 @@ namespace BrowserCalls.Web.Controllers
         {
             _repository = repository;
         }
+        public ActionResult Index()
+        {
+            return View(new Ticket());
+        }
 
         public ActionResult Create(
             [Bind(Include = "Name, PhoneNumber, Description")] Ticket ticket)
@@ -23,11 +27,12 @@ namespace BrowserCalls.Web.Controllers
             if (ModelState.IsValid)
             {
                 _repository.Create(ticket);
-                TempData["success"] = "Your ticket was submitted! An agent will call you soon.";
-                return RedirectToAction("Index", "Home");
+                ViewBag.Success = "Your ticket was submitted! An agent will call you soon.";
+                ModelState.Clear();
+                return View("Index");
             }
 
-            return View("~/Views/Home/Index.cshtml", ticket);
+            return View("Index");
         }
     }
 }

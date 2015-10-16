@@ -98,7 +98,7 @@
     <Compile Include="Controllers\CallControllerTest.cs" />
     <Compile Include="Controllers\ControllerTest.cs" />
     <Compile Include="Controllers\DashboardControllerTest.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Controllers\TicketsControllerTest.cs" />
     <Compile Include="Controllers\MockHttpContext.cs" />
     <Compile Include="Controllers\TokenControllerTest.cs" />
     <Compile Include="Domain\Twilio\CapabilityTest.cs" />
