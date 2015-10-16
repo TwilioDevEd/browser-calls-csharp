@@ -1,6 +1,6 @@
 # Browser Calls (ASP.NET MVC)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/owk4ub4wkpatiwe9/branch/master?svg=true)](https://ci.appveyor.com/project/acamino/browser-calls-csharp/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/tiltaaj3tg78i515?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/browser-calls-csharp)
 
 Learn how to use [Twilio Client](https://www.twilio.com/client) to make browser-to-phone and browser-to-browser calls with ease. The unsatisfied customers of the Birchwood Bicycle Polo Co. need your help.
 
