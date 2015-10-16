@@ -48,7 +48,7 @@ tickets. We use the
 <a href="//bit.ly/1OGlLhV">Razor Engine</a>
 to power the page.</p>
 <p>The <code>Ticket</code> model itself has just a few fields.</p>
-<p>Bear in mind that <code>Create</code> is just a thin wrapper for:</p>
+<p><code>Create</code> is just a thin wrapper for:</p>
 <pre><code>private readonly BrowserCallsContext _context =
     new BrowserCallsContext();
 
@@ -71,7 +71,7 @@ tickets which have been submitted.</p>
 <p>Each ticket also has a &quot;Call Customer&quot; button which invokes a JavaScript
 function we wrote named <code>callCustomer()</code>. That function kicks off a Twilio
 Client call to the phone number passed as its sole parameter.</p>
-</div><div data-file="BrowserCalls.Web/Domain/Twilio/Capability.cs" data-highlight="14-21" class="step"><h2 id="generate-a-capability-token">Generate a capability token</h2>
+</div><div data-file="BrowserCalls.Web/Domain/Twilio/Capability.cs" data-highlight="14-17, 19-21" class="step"><h2 id="generate-a-capability-token">Generate a capability token</h2>
 <p>Before our users can make calls with Twilio Client in their browser, we
 need to provide them with a capability token.</p>
 <p>We use the <a href="//www.nuget.org/packages/Twilio.Client/">Twilio.Client</a>
@@ -110,14 +110,14 @@ ready to make and receive calls.</p>
 function initiates the call.</p>
 <p>We use <code>Twilio.Device.connect()</code> to begin a new outgoing call. Our backend
 will tell Twilio how to handle this call, so we include a <code>phoneNumber</code>
-parameter that we&#39;ll use in our <code>call</code> view.</p>
-<p>Let&#39;s look at that view next.</p>
+parameter that we&#39;ll use in our <code>Connect</code> route.</p>
+<p>Let&#39;s look at that next.</p>
 <hr>
 <p><strong>See also:</strong></p>
 <ul>
 <li><a href="//www.twilio.com/docs/client/device#connect">Twilio.Device.connect()</a></li>
 </ul>
-</div><div data-file="BrowserCalls.Web/Controllers/CallController.cs" data-highlight="19-37" class="step"><h2 id="connect-the-call-to-a-phone-number">Connect the call to a phone number</h2>
+</div><div data-file="BrowserCalls.Web/Controllers/CallController.cs" data-highlight="19-29, 35-37" class="step"><h2 id="connect-the-call-to-a-phone-number">Connect the call to a phone number</h2>
 <p>Whenever one of our users makes a call, Twilio will send a POST request to
 the URL we set on our TwiML Application - in this case,
 <code>/Call/Connect</code>.</p>
@@ -133,7 +133,7 @@ we will then <a href="//www.twilio.com/docs/api/twiml/dial">Dial</a> in our TwiM
 Library</a></li>
 </ul>
 </div><div data-file="BrowserCalls.Web/Scripts/browser-calls.js" data-highlight="47-63" class="step"><h2 id="the-call-is-live">The call is live</h2>
-<p>After our <code>call</code> view responds, Twilio completes the connection between
+<p>After our <code>Connect</code> route responds, Twilio completes the connection between
 our support agent&#39;s browser and the customer&#39;s phone.</p>
 <p>We use the <code>Twilio.Device.connect()</code> callback to update some UI elements
 and make it clear our user is in a call. This function receives a
@@ -162,10 +162,11 @@ support agent.</p>
 </div><div data-file="BrowserCalls.Web/Controllers/CallController.cs" data-highlight="19-37" class="step"><h2 id="connect-the-call-to-the-support-agent-s-client">Connect the call to the support agent&#39;s client</h2>
 <p>To allow our support agents to accept incoming calls we use the
 <code>AllowClientIncoming</code> method when generating their capability token,
-passing <code>support_agent</code> as the client&#39;s name.</p>
-<p>When Twilio sends a POST request to our <code>/Call/Connect</code> end point, we can connect the
-call to our support agent by responding with a
-<a href="//www.twilio.com/docs/api/twiml/client">&lt;Client&gt;</a> TwiML noun and
+passing <code>support_agent</code> as the client&#39;s name:</p>
+<pre><code>capability.AllowClientIncoming(role);
+</code></pre><p>When Twilio sends a POST request to our <code>/Call/Connect</code> URL, we can
+connect the call to our support agent by responding with a
+<a href="//www.twilio.com/docs/api/twiml/client">Client</a> TwiML noun and
 the <code>support_agent</code> name.</p>
 <hr>
 <p><strong>See also:</strong></p>
@@ -214,9 +215,6 @@ support agent&#39;s availability changes.</p>
 browser-to-browser calls using Twilio Client.</p>
 <p>If you&#39;re a .NET developer working with Twilio, you might also enjoy these
 tutorials:</p>
-<p><a href="//www.twilio.com/docs/howto/walkthrough/appointment-reminders/csharp/mvc"><strong>Appointment-Reminders (ASP.NET
-MVC)</strong></a></p>
-<p>Schedule appointment reminders to be sent via SMS.</p>
 <p><a href="//www.twilio.com/docs/howto/walkthrough/ivr-phone-tree/csharp/mvc"><strong>IVR: Phone Tree (ASP.NET
 MVC)</strong></a></p>
 <p>Easily route callers to the right people and information with an IVR

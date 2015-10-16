@@ -52,7 +52,7 @@
 
       The `Ticket` model itself has just a few fields.
 
-      Bear in mind that `Create` is just a thin wrapper for:
+      `Create` is just a thin wrapper for:
 
       ```
       private readonly BrowserCallsContext _context =
@@ -88,7 +88,7 @@
       Client call to the phone number passed as its sole parameter.
 
   .step(data-file='BrowserCalls.Web/Domain/Twilio/Capability.cs',
-  data-highlight='14-21')
+  data-highlight='14-17, 19-21')
     :markdown
       ## Generate a capability token
 
@@ -147,9 +147,9 @@
 
       We use `Twilio.Device.connect()` to begin a new outgoing call. Our backend
       will tell Twilio how to handle this call, so we include a `phoneNumber`
-      parameter that we'll use in our `call` view.
+      parameter that we'll use in our `Connect` route.
 
-      Let's look at that view next.
+      Let's look at that next.
 
       ---
 
@@ -158,7 +158,7 @@
       * [Twilio.Device.connect()](//www.twilio.com/docs/client/device#connect)
 
   .step(data-file='BrowserCalls.Web/Controllers/CallController.cs',
-  data-highlight='19-37')
+  data-highlight='19-29, 35-37')
     :markdown
       ## Connect the call to a phone number
 
@@ -184,7 +184,7 @@
       :markdown
         ## The call is live
 
-        After our `call` view responds, Twilio completes the connection between
+        After our `Connect` route responds, Twilio completes the connection between
         our support agent's browser and the customer's phone.
 
         We use the `Twilio.Device.connect()` callback to update some UI elements
@@ -228,11 +228,15 @@
 
         To allow our support agents to accept incoming calls we use the
         `AllowClientIncoming` method when generating their capability token,
-        passing `support_agent` as the client's name.
+        passing `support_agent` as the client's name:
 
-        When Twilio sends a POST request to our `/Call/Connect` end point, we can connect the
-        call to our support agent by responding with a
-        [<Client>](//www.twilio.com/docs/api/twiml/client) TwiML noun and
+        ```
+        capability.AllowClientIncoming(role);
+        ```
+
+        When Twilio sends a POST request to our `/Call/Connect` URL, we can
+        connect the call to our support agent by responding with a
+        [Client](//www.twilio.com/docs/api/twiml/client) TwiML noun and
         the `support_agent` name.
 
         ---
@@ -307,11 +311,6 @@
 
         If you're a .NET developer working with Twilio, you might also enjoy these
         tutorials:
-
-        [**Appointment-Reminders (ASP.NET
-        MVC)**](//www.twilio.com/docs/howto/walkthrough/appointment-reminders/csharp/mvc)
-
-        Schedule appointment reminders to be sent via SMS.
 
         [**IVR: Phone Tree (ASP.NET
         MVC)**](//www.twilio.com/docs/howto/walkthrough/ivr-phone-tree/csharp/mvc)
