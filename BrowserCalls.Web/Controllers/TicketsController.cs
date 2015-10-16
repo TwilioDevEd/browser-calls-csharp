@@ -24,7 +24,7 @@ namespace BrowserCalls.Web.Controllers
             {
                 _repository.Create(ticket);
                 TempData["success"] = "Your ticket was submitted! An agent will call you soon.";
-                return RedirectToAction("Index", new { Controller = "Home" });
+                return RedirectToAction("Index", "Home");
             }
 
             return View("~/Views/Home/Index.cshtml", ticket);
