@@ -12,13 +12,13 @@ Learn how to use [Twilio Client](https://www.twilio.com/client) to make browser-
 
 This project is configured to use a **TwiML App**, which allows us to easily set the voice URLs for all Twilio phone numbers we purchase in this app.
 
-Create a new TwiML app at https://www.twilio.com/user/account/apps/add and use its `Sid` as the `TWIML_APPLICATION_SID` environment variable wherever you run this app.
+Create a new TwiML app at https://www.twilio.com/console/phone-numbers/dev-tools/twiml-apps/add and use its `Sid` as the `TWIML_APPLICATION_SID` environment variable wherever you run this app.
 
 ![Creating a TwiML App](http://howtodocs.s3.amazonaws.com/call-tracking-twiml-app.gif)
 
 See the end of the "Local development" section for details on the exact URL to use in your TwiML app.
 
-Once you have created your TwiML app, configure your Twilio phone number to use it ([instructions here](https://www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app)). If you don't have a Twilio phone number yet, you can purchase a new number in your [Twilio Account Dashboard](https://www.twilio.com/user/account/phone-numbers/incoming).
+Once you have created your TwiML app, configure your Twilio phone number to use it ([instructions here](https://www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app)). If you don't have a Twilio phone number yet, you can purchase a new number in your [Twilio Account Dashboard](https://www.twilio.com/console/phone-numbers/incoming).
 
 ### Local development
 
@@ -58,12 +58,20 @@ To actually forward incoming calls, your development server will need to be
 publicly accessible. [We recommend using ngrok to solve this
 problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
 
+To start your ngrok tunnel, run this from a command line (after [downloading ngrok](https://ngrok.com/download)):
+
+```
+ngrok http -host-header="localhost:9932" 9932
+```
+
 Once you have started ngrok, update your TwiML app's voice URL setting to use
 your ngrok hostname, so it will look something like this:
 
 ```
 http://<your-ngrok-subdomain>.ngrok.io/Call/Connect
 ```
+
+If you make changes to your ASP.NET application and restart it, there is no need to restart the ngrok tunnel. Leaving it running will avoid getting a new ngrok subdomain and requiring you to update your TwiML app's voice URL.
 
 ## Meta
 
