@@ -24,7 +24,7 @@ Once you have created your TwiML app, configure your Twilio phone number to use 
 
 1. First clone this repository and `cd` into its directory:
    ```
-   git clone git@github.com:TwilioDevEd/browser-calls-csharp.git
+   git clone https://github.com/TwilioDevEd/browser-calls-csharp.git
 
    cd browser-calls-csharp
    ```
