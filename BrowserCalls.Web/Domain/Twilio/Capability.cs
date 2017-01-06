@@ -1,4 +1,4 @@
-﻿using Twilio;
+﻿using Twilio.JWT;
 
 namespace BrowserCalls.Web.Domain.Twilio
 {
