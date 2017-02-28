@@ -11,9 +11,10 @@ namespace BrowserCalls.Web.Test.Controllers
         public void GivenATokenRequest_ThenATokenIsGenerated()
         {
             var mockCredentials = new Mock<ICredentials>();
-            mockCredentials.Setup(c => c.AccountSID).Returns("account-sid");
-            mockCredentials.Setup(c => c.AuthToken).Returns("auth-token");
-            mockCredentials.Setup(c => c.TwiMLApplicationSID).Returns("twiml-app-sid");
+
+            mockCredentials.Setup(c => c.AccountSID).Returns("Your Twilio Account SID");
+            mockCredentials.Setup(c => c.AuthToken).Returns("Your Twilio Auth Token");
+            mockCredentials.Setup(c => c.TwiMLApplicationSID).Returns("Your Twilio Phone Number");
 
             var controller = new TokenController(mockCredentials.Object);
             const string currentPage = "/";

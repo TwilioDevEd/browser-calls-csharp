@@ -1,4 +1,6 @@
-﻿using Twilio;
+﻿using System.Collections.Generic;
+using Twilio.Jwt;
+using Twilio.Jwt.Client;
 
 namespace BrowserCalls.Web.Domain.Twilio
 {
@@ -13,11 +15,16 @@ namespace BrowserCalls.Web.Domain.Twilio
 
         public string Generate(string role)
         {
-            var capability = new TwilioCapability(_credentials.AccountSID, _credentials.AuthToken);
-            capability.AllowClientOutgoing(_credentials.TwiMLApplicationSID);
-            capability.AllowClientIncoming(role);
+            var scopes = new HashSet<IScope>
+            {
+                new IncomingClientScope(role),
+                new OutgoingClientScope(_credentials.TwiMLApplicationSID)
+            };
+            var capability = new ClientCapability(_credentials.AccountSID,
+                                                  _credentials.AuthToken,
+                                                  scopes: scopes);
 
-            return capability.GenerateToken();
+            return capability.ToJwt();
         }
     }
 }
