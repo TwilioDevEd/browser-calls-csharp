@@ -1,10 +1,11 @@
 ﻿using System.Web.Mvc;
 using BrowserCalls.Web.Domain.Twilio;
+using Twilio.AspNet.Mvc;
 using Twilio.TwiML;
 
 namespace BrowserCalls.Web.Controllers
 {
-    public class CallController : Controller
+    public class CallController : TwilioController
     {
         private readonly ICredentials _credentials;
 
@@ -32,7 +33,7 @@ namespace BrowserCalls.Web.Controllers
             }
             response.Dial(dial);
 
-            return Content(response.ToString(), "application/xml");
+            return TwiML(response);
         }
     }
 }
