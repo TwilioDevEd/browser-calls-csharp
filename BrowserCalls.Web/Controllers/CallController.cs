@@ -2,6 +2,7 @@
 using BrowserCalls.Web.Domain.Twilio;
 using Twilio.AspNet.Mvc;
 using Twilio.TwiML;
+using Twilio.TwiML.Voice;
 
 namespace BrowserCalls.Web.Controllers
 {
@@ -31,7 +32,7 @@ namespace BrowserCalls.Web.Controllers
             {
                 dial.Client("support_agent");
             }
-            response.Dial(dial);
+            response.Append(dial);
 
             return TwiML(response);
         }

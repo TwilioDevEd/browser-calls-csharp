@@ -16,13 +16,16 @@ Learn how to use [Twilio Client](https://www.twilio.com/client) to make browser-
 
 This project is configured to use a **TwiML App**, which allows us to easily set the voice URLs for all Twilio phone numbers we purchase in this app.
 
-Create a new TwiML app at https://www.twilio.com/console/phone-numbers/dev-tools/twiml-apps/add and use its `Sid` as the `TWIML_APPLICATION_SID` environment variable wherever you run this app.
+Create a new TwiML app and save its `Sid`. You will need it to setup your app settings.
+  Using the [twilio-cli](https://www.twilio.com/docs/twilio-cli) ?
+  ```
+  twilio api:core:applications:create --friendly-name browser-calls --voice-url [your-app-url]
+  ```
+  If not you can do it at https://www.twilio.com/console/voice/twiml/apps/create
+  See the end of the "Local development" section for details on the exact URL to use in your TwiML app.
 
-![Creating a TwiML App](http://howtodocs.s3.amazonaws.com/call-tracking-twiml-app.gif)
-
-See the end of the "Local development" section for details on the exact URL to use in your TwiML app.
-
-Once you have created your TwiML app, configure your Twilio phone number to use it ([instructions here](https://www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app)). If you don't have a Twilio phone number yet, you can purchase a new number in your [Twilio Account Dashboard](https://www.twilio.com/console/phone-numbers/incoming).
+Once you have created your TwiML app, configure your Twilio phone number to use it ([instructions here](https://support.twilio.com/hc/en-us/articles/223180928-How-Do-I-Create-a-TwiML-App-)).
+If you don't have a Twilio phone number yet, you can purchase a new number in your [Twilio Account Dashboard](https://www.twilio.com/console/phone-numbers/incoming).
 
 ### Local development
 
