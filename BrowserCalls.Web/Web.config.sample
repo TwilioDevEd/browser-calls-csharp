@@ -29,7 +29,7 @@
     <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
       <dependentAssembly>
         <assemblyIdentity name="Newtonsoft.Json" culture="neutral" publicKeyToken="30ad4fe6b2a6aeed" />
-        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
+        <bindingRedirect oldVersion="0.0.0.0-12.0.0.0" newVersion="12.0.0.0" />
       </dependentAssembly>
       <dependentAssembly>
         <assemblyIdentity name="System.Web.Optimization" publicKeyToken="31bf3856ad364e35" />
@@ -37,7 +37,7 @@
       </dependentAssembly>
       <dependentAssembly>
         <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="0.0.0.0-1.5.2.14234" newVersion="1.5.2.14234" />
+        <bindingRedirect oldVersion="0.0.0.0-1.6.5135.21930" newVersion="1.6.5135.21930" />
       </dependentAssembly>
       <dependentAssembly>
         <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
@@ -49,7 +49,15 @@
       </dependentAssembly>
       <dependentAssembly>
         <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="1.0.0.0-5.2.2.0" newVersion="5.2.2.0" />
+        <bindingRedirect oldVersion="1.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.IdentityModel.Tokens.Jwt" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-5.5.0.0" newVersion="5.5.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.IdentityModel.Tokens" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-5.5.0.0" newVersion="5.5.0.0" />
       </dependentAssembly>
     </assemblyBinding>
   </runtime>

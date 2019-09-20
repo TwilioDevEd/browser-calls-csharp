@@ -59,26 +59,23 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
 
 7. Check it out at http://localhost:9932
 
-That's it!
+    To actually forward incoming calls, your development server will need to be publicly accessible. [We recommend using ngrok to solve this problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
 
-To actually forward incoming calls, your development server will need to be
-publicly accessible. [We recommend using ngrok to solve this
-problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html).
+8. To start your ngrok tunnel, run this from a command line (after [downloading ngrok](https://ngrok.com/download)):
 
-To start your ngrok tunnel, run this from a command line (after [downloading ngrok](https://ngrok.com/download)):
+	```
+	ngrok http -host-header="localhost:9932" 9932
+	```
 
-```
-ngrok http -host-header="localhost:9932" 9932
-```
+	Or, you can install [Ngrok Extensions](https://marketplace.visualstudio.com/items?itemName=DavidProthero.NgrokExtensions) for Visual Studio.
 
-Once you have started ngrok, update your TwiML app's voice URL setting to use
-your ngrok hostname, so it will look something like this:
+9. Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname, so it will look something like this:
 
-```
-http://<your-ngrok-subdomain>.ngrok.io/Call/Connect
-```
+	```
+	http://<your-ngrok-subdomain>.ngrok.io/Call/Connect
+	```
 
-If you make changes to your ASP.NET application and restart it, there is no need to restart the ngrok tunnel. Leaving it running will avoid getting a new ngrok subdomain and requiring you to update your TwiML app's voice URL.
+    If you make changes to your ASP.NET application and restart it, there is no need to restart the ngrok tunnel. Leaving it running will avoid getting a new ngrok subdomain and requiring you to update your TwiML app's voice URL.
 
 ## Meta
 
