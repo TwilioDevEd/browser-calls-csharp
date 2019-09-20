@@ -7,20 +7,19 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="@Url.Action("Index", "Home")">Birchwood Bicycle Polo Co.</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="@Url.Action("Index", "Dashboard")">Support dashboard</a></li>
+            <a class="navbar-brand" href="@Url.Action("Index", "Tickets")">Birchwood Bicycle Polo Co.</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Dashboard")">Support dashboard</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -28,12 +27,12 @@
     <div class="container">
         @RenderBody()
         <footer>
-            <p>&copy; Your Company 2015</p>
+            <p>&copy; Your Company  @DateTime.Now.Year</p>
         </footer>
     </div> <!-- /container -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script src="//static.twilio.com/libs/twiliojs/1.2/twilio.min.js"></script>
+    <script src="//media.twiliocdn.com/sdk/js/client/v1.8/twilio.min.js"></script>
     @Scripts.Render("~/bundles/browser-calls")
 </body>
 </html>
