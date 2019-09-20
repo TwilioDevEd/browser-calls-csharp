@@ -25,7 +25,7 @@ Create a new TwiML app and save its `Sid`. You will need it to setup your app se
   See the end of the "Local development" section for details on the exact URL to use in your TwiML app.
 
 Once you have created your TwiML app, configure your Twilio phone number to use it ([instructions here](https://support.twilio.com/hc/en-us/articles/223180928-How-Do-I-Create-a-TwiML-App-)).
-If you don't have a Twilio phone number yet, you can purchase a new number in your [Twilio Account Dashboard](https://www.twilio.com/console/phone-numbers/incoming).
+If you don't have a Twilio phone number yet, you can purchase a new number in the [Twilio Console](https://www.twilio.com/console/phone-numbers/incoming).
 
 ### Local development
 
@@ -76,6 +76,8 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
 	```
 
     If you make changes to your ASP.NET application and restart it, there is no need to restart the ngrok tunnel. Leaving it running will avoid getting a new ngrok subdomain and requiring you to update your TwiML app's voice URL.
+
+10. Finally, open up the dashboard for the app http://localhost:9932/Dashboard -- from here you can answer incoming calls and make outbound calls for open support tickets.
 
 ## Meta
 
