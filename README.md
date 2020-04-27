@@ -4,6 +4,7 @@
 
 # Browser Calls (ASP.NET MVC)
 
+![](https://github.com/TwilioDevEd/browser-calls-csharp/workflows/NetFx/badge.svg)
 [![Build status](https://ci.appveyor.com/api/projects/status/tiltaaj3tg78i515?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/browser-calls-csharp)
 
 > We are currently in the process of updating this sample template. If you are encountering any issues with the sample, please open an issue at [github.com/twilio-labs/code-exchange/issues](https://github.com/twilio-labs/code-exchange/issues) and we'll try to help you.
@@ -46,11 +47,22 @@ If you don't have a Twilio phone number yet, you can purchase a new number in th
    <appSettings>
      <!-- omitted for clarity -->
      <add key="TwilioAccountSid" value="TWILIO_ACCOUNT_SID" />
-     <add key="TwilioAuthToken" value="TWILIO_AUTH_TOKEN" />
      <add key="TwiMLApplicationSid" value="TWIML_APPLICATION_SID" />
      <add key="TwilioPhoneNumber" value="TWILIO_PHONE_NUMBER" />
+     <add key="TwilioApiKey" value="API_KEY" />
+      <add key="TwilioApiSecret" value="API_SECRET" />
    </appSettings>
    ```
+
+   You can find your `TWILIO_ACCOUNT_SID` under your
+   [Twilio Account Settings](https://www.twilio.com/user/account/settings). Set
+   `TWILIO_APPLICATION_SID` to the app SID you created
+   before. `TWILIO_PHONE_NUMBER` should be set to the phone number you
+   purchased above.
+
+   The `API_KEY` and `API_SECRET` values are your REST API Key information needed
+   to create an [Access Token](https://www.twilio.com/docs/iam/access-tokens).
+   You can create [one here](https://www.twilio.com/console/project/api-keys).
 
 4. Build the solution.
 
@@ -74,15 +86,34 @@ If you don't have a Twilio phone number yet, you can purchase a new number in th
 9. Once you have started ngrok, update your TwiML app's voice URL setting to use your ngrok hostname, so it will look something like this:
 
 	```
-	http://<your-ngrok-subdomain>.ngrok.io/Call/Connect
+	https://<your-ngrok-subdomain>.ngrok.io/Call/Connect
 	```
 
     If you make changes to your ASP.NET application and restart it, there is no need to restart the ngrok tunnel. Leaving it running will avoid getting a new ngrok subdomain and requiring you to update your TwiML app's voice URL.
 
-10. Finally, open up the dashboard for the app http://localhost:9932/Dashboard -- from here you can answer incoming calls and make outbound calls for open support tickets.
+### Try it out
+
+1. To create a support ticket go to the home page.
+   On this page you could fill some fields and create a ticket or you can call to support.
+
+   ```
+   https://<your-ngrok-subdomain>.ngrok.io
+   ```
+
+   __Note:__ Make sure you use the `https` version of your ngrok URL as some
+   browsers won't allow access to the microphone unless you are using a secure
+   SSL connection.
+
+1. To respond to support tickets go to the Dashboard page (you should open two windows or tabs).
+   On this page you could call customers and answers phone calls.
+
+   ```
+   https://<your-ngrok-subdomain>.ngrok.io/Dashboard
+   ```
 
 ## Meta
 
 * No warranty expressed or implied. Software is as is. Diggity.
+* The CodeExchange repository can be found [here](https://github.com/twilio-labs/code-exchange/).
 * [MIT License](http://www.opensource.org/licenses/mit-license.html)
 * Lovingly crafted by Twilio Developer Education.

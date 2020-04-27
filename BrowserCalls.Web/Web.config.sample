@@ -16,10 +16,11 @@
     <add key="webpages:Enabled" value="false" />
     <add key="ClientValidationEnabled" value="true" />
     <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-    <add key="TwilioAccountSid" value="TWILIO_ACCOUNT_SID" />
-    <add key="TwilioAuthToken" value="TWILIO_AUTH_TOKEN" />
-    <add key="TwiMLApplicationSid" value="TWIML_APPLICATION_SID" />
-    <add key="TwilioPhoneNumber" value="TWILIO_PHONE_NUMBER" />
+    <add key="TwilioAccountSid" value="ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+    <add key="TwiMLApplicationSid" value="APXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+    <add key="TwilioPhoneNumber" value="+1XXXYYYZZZZ" />
+    <add key="TwilioApiKey" value="SKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+    <add key="TwilioApiSecret" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
   </appSettings>
   <system.web>
     <compilation debug="true" targetFramework="4.5" />
