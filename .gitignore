@@ -207,3 +207,4 @@ FakesAssemblies/
 
 # Project
 BrowserCalls.Web/Web.config
+BrowserCalls.Web/Scripts/lib

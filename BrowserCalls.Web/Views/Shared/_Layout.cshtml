@@ -3,8 +3,7 @@
 <head>
     <title>Browser Calls</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/styles")
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,9 +29,7 @@
             <p>&copy; Your Company  @DateTime.Now.Year</p>
         </footer>
     </div> <!-- /container -->
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     <script type="text/javascript" src="//sdk.twilio.com/js/client/releases/1.10.1/twilio.js"></script>
-    @Scripts.Render("~/bundles/browser-calls")
+    @Scripts.Render("~/bundles/scripts")
 </body>
 </html>

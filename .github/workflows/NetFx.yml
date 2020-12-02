@@ -2,9 +2,9 @@ name: NetFx
 
 on:
   push:
-    branches: [ master, next ]
+    branches: [ main ]
   pull_request:
-    branches: [ master, next ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1
 
     - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
+      uses: NuGet/setup-nuget@v1
 
     - name: Restore NuGet Packages
       run: nuget restore BrowserCalls.sln
@@ -31,4 +31,3 @@ jobs:
 
     - name: Run Tests with NUnit Console
       run: .\packages\NUnit.ConsoleRunner.3.11.1\tools\nunit3-console BrowserCalls.Web.Test\bin\Debug\BrowserCalls.Web.Test.dll
-

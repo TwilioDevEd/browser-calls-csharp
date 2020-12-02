@@ -23,8 +23,8 @@
     <add key="TwilioApiSecret" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
   </appSettings>
   <system.web>
-    <compilation debug="true" targetFramework="4.5" />
-    <httpRuntime targetFramework="4.5" />
+    <compilation debug="false" targetFramework="4.7"/>
+    <httpRuntime targetFramework="4.7"/>
   </system.web>
   <runtime>
     <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
@@ -53,12 +53,12 @@
         <bindingRedirect oldVersion="1.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
       </dependentAssembly>
       <dependentAssembly>
-        <assemblyIdentity name="System.IdentityModel.Tokens.Jwt" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="1.0.0.0-5.5.0.0" newVersion="5.5.0.0" />
+        <assemblyIdentity name="System.IdentityModel.Tokens.Jwt" publicKeyToken="31bf3856ad364e35" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-6.8.0.0" newVersion="6.8.0.0"/>
       </dependentAssembly>
       <dependentAssembly>
-        <assemblyIdentity name="Microsoft.IdentityModel.Tokens" publicKeyToken="31bf3856ad364e35" />
-        <bindingRedirect oldVersion="1.0.0.0-5.5.0.0" newVersion="5.5.0.0" />
+        <assemblyIdentity name="Microsoft.IdentityModel.Tokens" publicKeyToken="31bf3856ad364e35" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-6.8.0.0" newVersion="6.8.0.0"/>
       </dependentAssembly>
     </assemblyBinding>
   </runtime>

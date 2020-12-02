@@ -1,7 +1,7 @@
 ﻿/* Custom CSS for Bicycle Polo example */
 
 .bicycle-polo-background {
-  background-image: url(Images/bicycle-polo.jpg);
+  background-image: url(images/bicycle-polo.jpg);
   background-size: cover;
   background-position: 75% 25%;
 }

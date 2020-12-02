@@ -5,7 +5,6 @@
 # Browser Calls (ASP.NET MVC)
 
 ![](https://github.com/TwilioDevEd/browser-calls-csharp/workflows/NetFx/badge.svg)
-[![Build status](https://ci.appveyor.com/api/projects/status/tiltaaj3tg78i515?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/browser-calls-csharp)
 
 > We are currently in the process of updating this sample template. If you are encountering any issues with the sample, please open an issue at [github.com/twilio-labs/code-exchange/issues](https://github.com/twilio-labs/code-exchange/issues) and we'll try to help you.
 
