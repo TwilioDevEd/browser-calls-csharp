@@ -8,16 +8,18 @@
 
 <div class="row">
     <div class="col-md-4 col-md-push-8">
-        <div class="panel panel-primary client-controls">
-            <div class="panel-heading">
-                <h3 class="panel-title">Make a call</h3>
+        <div class="card card-primary client-controls">
+            <div class="card-heading">
             </div>
-            <div class="panel-body">
-                <p><strong>Status</strong></p>
-                <div class="well well-sm" id="call-status">
-                    Connecting to Twilio...
-                </div>
+            <div class="card-body">
+                <h3 class="card-title">Make a call</h3>
 
+                <p>
+                    <strong>Status: </strong>
+                    <span id="call-status">
+                        Connecting to Twilio...
+                    </span>
+                </p>
                 <button class="btn btn-lg btn-success answer-button" disabled>Answer call</button>
                 <button class="btn btn-lg btn-danger hangup-button" disabled onclick="hangUp()">Hang up</button>
             </div>
@@ -27,12 +29,9 @@
     <div class="col-md-8 col-md-pull-4">
         @foreach (var ticket in Model)
         {
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Ticket #@ticket.Id <small class="pull-right">@ticket.CreatedAt</small></h3>
-            </div>
-
-            <div class="panel-body">
+        <div class="card card-default">
+            <div class="card-body">
+                <h3 class="card-title">Ticket #@ticket.Id <small class="pull-right">@ticket.CreatedAt</small></h3>
 
                 <div class="pull-right">
                     <button onclick="callCustomer('@ticket.PhoneNumber')" type="button" class="btn btn-primary btn-lg call-customer-button">

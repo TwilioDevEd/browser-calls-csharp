@@ -1,0 +1,33 @@
+name: NetFx
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      name: Checkout Code
+
+    - name: Setup MSBuild Path
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1
+
+    - name: Restore NuGet Packages
+      run: nuget restore BrowserCalls.sln
+
+    - name: Set up local configuration
+      run: copy "BrowserCalls.Web\Web.config.sample" "BrowserCalls.Web\Web.config"
+
+    - name: Build Web App
+      run: msbuild BrowserCalls.sln /verbosity:minimal
+
+    - name: Run Tests with NUnit Console
+      run: .\packages\NUnit.ConsoleRunner.3.11.1\tools\nunit3-console BrowserCalls.Web.Test\bin\Debug\BrowserCalls.Web.Test.dll

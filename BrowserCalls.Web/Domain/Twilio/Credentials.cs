@@ -5,7 +5,8 @@ namespace BrowserCalls.Web.Domain.Twilio
     public interface ICredentials
     {
         string AccountSID { get; }
-        string AuthToken { get; }
+        string ApiKey { get; }
+        string ApiSecret { get; }
         string TwiMLApplicationSID { get; }
         string PhoneNumber { get; }
     }
@@ -17,13 +18,6 @@ namespace BrowserCalls.Web.Domain.Twilio
             get
             {
                 return WebConfigurationManager.AppSettings["TwilioAccountSid"];
-            }
-        }
-        public string AuthToken
-        {
-            get
-            {
-                return WebConfigurationManager.AppSettings["TwilioAuthToken"];
             }
         }
 
@@ -39,6 +33,22 @@ namespace BrowserCalls.Web.Domain.Twilio
             {
                 return WebConfigurationManager.AppSettings["TwilioPhoneNumber"];
             }
+        }
+
+        public string ApiKey
+        {
+        get
+        {
+            return WebConfigurationManager.AppSettings["TwilioApiKey"];
+        }
+        }
+
+        public string ApiSecret
+        {
+        get
+        {
+            return WebConfigurationManager.AppSettings["TwilioApiSecret"];
+        }
         }
     }
 }

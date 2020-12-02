@@ -13,7 +13,8 @@ namespace BrowserCalls.Web.Test.Controllers
             var mockCredentials = new Mock<ICredentials>();
 
             mockCredentials.Setup(c => c.AccountSID).Returns("Your Twilio Account SID");
-            mockCredentials.Setup(c => c.AuthToken).Returns("Your Twilio Auth Token");
+            mockCredentials.Setup(c => c.ApiKey).Returns("Your Twilio API KEY");
+            mockCredentials.Setup(c => c.ApiSecret).Returns("Your Twilio API SECRET");
             mockCredentials.Setup(c => c.TwiMLApplicationSID).Returns("Your Twilio Phone Number");
 
             var controller = new TokenController(mockCredentials.Object);

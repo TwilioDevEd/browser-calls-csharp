@@ -9,7 +9,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowserCalls.Web.Test", "Br
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7B0E25FE-AC2D-481E-B741-1AE3C71ACE0C}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.mergify.yml = .mergify.yml
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{8D764FD6-18E1-43F9-9C48-01A855CFFD76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{6B19DBC4-9C2D-41BE-BF97-63CD3B2C7543}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\NetFx.yml = .github\workflows\NetFx.yml
 	EndProjectSection
 EndProject
 Global
@@ -29,6 +41,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8D764FD6-18E1-43F9-9C48-01A855CFFD76} = {7B0E25FE-AC2D-481E-B741-1AE3C71ACE0C}
+		{6B19DBC4-9C2D-41BE-BF97-63CD3B2C7543} = {8D764FD6-18E1-43F9-9C48-01A855CFFD76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D90B3BC9-BE1A-454E-81E7-CE287890BF23}

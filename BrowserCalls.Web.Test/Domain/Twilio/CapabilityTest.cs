@@ -11,7 +11,8 @@ namespace BrowserCalls.Web.Test.Domain.Twilio
         {
             var mockCredentials = new Mock<ICredentials>();
             mockCredentials.Setup(c => c.AccountSID).Returns("account-sid");
-            mockCredentials.Setup(c => c.AuthToken).Returns("auth-token");
+            mockCredentials.Setup(c => c.ApiKey).Returns("api-key");
+            mockCredentials.Setup(c => c.ApiSecret).Returns("api-secret");
             mockCredentials.Setup(c => c.TwiMLApplicationSID).Returns("twiml-app-sid");
 
             var token = new Capability(mockCredentials.Object);
