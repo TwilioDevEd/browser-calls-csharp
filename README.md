@@ -4,27 +4,12 @@
 
 # Browser Calls (ASP.NET MVC)
 
-![](https://github.com/TwilioDevEd/browser-calls-csharp/workflows/NetFx/badge.svg)
-
-> We are currently in the process of updating this sample template. If you are encountering any issues with the sample, please open an issue at [github.com/twilio-labs/code-exchange/issues](https://github.com/twilio-labs/code-exchange/issues) and we'll try to help you.
+> This repository is now archived and is no longer being maintained. 
+> Check out the [JavaScript SDK Quickstarts](https://www.twilio.com/docs/voice/sdks/javascript/get-started) to get started with browser-based calling. 
 
 ## About
 
-Learn how to use [Twilio Client](https://www.twilio.com/client) to make browser-to-phone and browser-to-browser calls with ease. The unsatisfied customers of the Birchwood Bicycle Polo Co. need your help.
-
-[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/browser-calls/csharp/mvc)!
-
-Implementations in other languages:
-
-| PHP | Java | Python | Ruby | Node |
-| :--- | :--- | :----- | :-- | :--- |
-| [Done](https://github.com/TwilioDevEd/browser-calls-laravel)  | [Done](https://github.com/TwilioDevEd/browser-calls-spark)  | [Done](https://github.com/TwilioDevEd/browser-calls-django)  | [Done](https://github.com/TwilioDevEd/browser-calls-rails) | [Done](https://github.com/TwilioDevEd/browser-calls-node)  |
-
-<!--
-### How it works
-
-**TODO: Describe how it works**
--->
+Learn how to use [Twilio's JavaScript SDK](https://www.twilio.com/docs/voice/sdks/javascript) to make browser-to-phone and browser-to-browser calls with ease. The unsatisfied customers of the Birchwood Bicycle Polo Co. need your help!
 
 ## Set up
 
@@ -132,12 +117,6 @@ That's it!
 ## Resources
 
 - The CodeExchange repository can be found [here](https://github.com/twilio-labs/code-exchange/).
-
-## Contributing
-
-This template is open source and welcomes contributions. All contributions are subject to our [Code of Conduct](https://github.com/twilio-labs/.github/blob/master/CODE_OF_CONDUCT.md).
-
-[Visit the project on GitHub](https://github.com/twilio-labs/sample-template-dotnet)
 
 ## License
 
